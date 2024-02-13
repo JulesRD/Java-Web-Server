@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ReverseResponse {
-    public String reverse;
+    public String reversed;
     public String original;
 
     public ReverseResponse(String original) {
         this.original = original;
         StringBuilder r = new StringBuilder(original);
-        this.reverse = r.reverse().toString();
+        this.reversed = r.reverse().toString();
     }
 }
