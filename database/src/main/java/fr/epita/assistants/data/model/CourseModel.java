@@ -9,5 +9,5 @@ public class CourseModel {
 
     @Column(name = "id") @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long course_id;
     public String name;
-    public @ElementCollection @CollectionTable(name = "course_model_tags") @JoinColumn(name = "course_id") List<String> tag;
+    public @ElementCollection @CollectionTable(name = "course_model_tags", joinColumns = @JoinColumn(name = "course_id")) List<String> tag;
 }
