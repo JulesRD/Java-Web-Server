@@ -1,5 +1,6 @@
 package fr.epita.assistants.jws.presentation.rest.response;
 
+import fr.epita.assistants.jws.data.model.PlayerModel;
 import fr.epita.assistants.jws.utils.GameState;
 import fr.epita.assistants.jws.utils.Player;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class GameDetailResponse {
     public String startTime;
     public GameState state;
-    public List<Player> players;
+    public List<PlayerModel> players;
     public List<String> map;
-    public int id;
+    public Long id;
 }
