@@ -51,4 +51,45 @@ public class Service {
         return gameRepo.findById(id);
     }
 
+    public List<GameModel> getAllGames()
+    {
+        return gameRepo.ListAll(); // TODO maybe error here
+    }
+
+    public GameModel joinGame(Long id, String name)
+    {
+        GameModel game = gameRepo.findById(id);
+        if (game == null)
+            return null;
+        PlayerModel player;
+        switch (game.players.size())
+        {
+            case 0:
+                player = new PlayerModel(null, null, 3, name, 1, 1, game);
+                break;
+            case 1:
+                player = new PlayerModel(null, null, 3, name, 15, 1, game);
+                break;
+            case 2:
+                player = new PlayerModel(null, null, 3, name, 15, 13, game);
+                break;
+            case 3:
+                player = new PlayerModel(null, null, 3, name, 1, 13, game);
+                break;
+            default:
+                throw new BadRequestException();
+        }
+        game.players.add(player);
+        return game;
+    }
+
+    public GameModel startGame(Long id)
+    {
+        GameModel game = gameRepo.findById(id);
+        if (game == null)
+            throw new IllegalArgumentException(); // TODO error 404 here
+        game.state = GameState.RUNNING;
+        return game;
+    }
+
 }
